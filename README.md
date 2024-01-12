@@ -5,3 +5,6 @@ This script will get the number of players on a Minecraft server and log it in t
 
 # Example output
 ![Screenshot 2024-01-12 121501](https://github.com/NorthernChicken/MCServerPlayerCountLogger/assets/144752748/17134a2e-422a-4175-8b00-671f6e421e27)
+
+# Example log
+![Screenshot 2024-01-12 123143](https://github.com/NorthernChicken/MCServerPlayerCountLogger/assets/144752748/7f2a9c28-e4ce-47fb-a952-03e2bd67db4d)
