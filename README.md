@@ -1,5 +1,5 @@
 # MCServerPlayerCountLogger
-This script will get the number of players on a Minecraft server and log it in the console. Uses Mcstatus.io's API.
+This script will get the number of players on a Minecraft server and log it in the console and a text file. Uses Mcstatus.io's API.
 
 *Note* Times might be inaccurate up to 30 seconds because Mcstatus's API can take time to update.
 
