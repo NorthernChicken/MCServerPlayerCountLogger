@@ -38,6 +38,8 @@ while True:
         print("Server Status:", formatted_status)
         print("Players Online:", players_online)
         print("*---------------------------------")
+        with open("log.txt", 'a') as file:
+            file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + " players\n")
         time.sleep(3)
     else:
         print("Error:", response.status_code)
