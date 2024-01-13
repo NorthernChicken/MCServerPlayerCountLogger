@@ -15,7 +15,10 @@ bold_end = "\033[0m"
 
 api_base = "https://api.mcstatus.io/v2/status/java/"
 
-api_link = api_base + "4.tcp.us-cal-1.ngrok.io:19032"
+with open('ip.txt', 'r') as file:
+    ip = file.read()
+
+api_link = api_base + ip
 
 while True:
     response = requests.get(api_link)
