@@ -1,5 +1,6 @@
 # MCServerPlayerCountLogger
-This script will get the number of players on a Minecraft server and log it in the console and a text file. Uses Mcstatus.io's API.
+The first script will get the number of players on a Minecraft server and log it in the console and a text file. Uses Mcstatus.io's API.
+The second will notify you in the terminal if the player count reaches a certain amount.
 
 *Note* Times might be inaccurate up to 30 seconds because Mcstatus's API can take time to update.
 
@@ -7,7 +8,7 @@ This script will get the number of players on a Minecraft server and log it in t
 * Requires git and python
 * Download repo: ```git clone github.com/NorthernChicken/MCServerPlayerCountLogger```
 * Change to the directory ```cd MCServerPlayerCountLogger``` from wherever it was downloaded to
-* run ```python main.py```
+* run ```python main.py``` for the playercountlogger or ```python playercount.py``` for the player amount notifier.
 * the log is stored in ```log.txt```
 
 # Example output
