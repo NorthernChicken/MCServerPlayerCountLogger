@@ -21,31 +21,44 @@ with open('ip.txt', 'r') as file:
 api_link = api_base + ip
 
 while True:
-    response = requests.get(api_link)
+    try:
+        response = requests.get(api_link)
 
-    if response.status_code == 200:
-        json_data = response.json()
-        players_online = json_data.get("players", {}).get("online", 0)
-        online_status = json_data['online']
-        if online_status:
-            formatted_status = "Online"
-        elif not online_status:
-            formatted_status = "Offline"
+        if response.status_code == 200:
+            json_data = response.json()
+            players_online = json_data.get("players", {}).get("online", 0)
+            online_status = json_data['online']
+            if online_status:
+                formatted_status = "Online"
+            elif not online_status:
+                formatted_status = "Offline"
+            else:
+                formatted_status = "Unknown"
+            current_datetime = datetime.now()
+            formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+            print("*---------------------------------")
+            print(f"{bold_start}{formatted_datetime}{bold_end}")
+            print("Server Status:", formatted_status)
+            print("Players Online:", players_online)
+            print("*---------------------------------")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + " players\n")
+            if players_online >= targetamt:
+                ctypes.windll.user32.MessageBoxW(0, f"Your specified player amount ({targetamt}) has been reached.", "!! TARGET AMOUNT REACHED !!", 0)
+                break
+            time.sleep(3)
+        elif response.status_code == 404:
+            print("Minecraft server not found or MCStatus API is down. Check server address and try again.")
+            time.sleep(5)
+        elif response.status_code == 429:
+            print("Too many requests. Please wait...")
+            time.sleep(10)
+        elif response.status_code == 500:
+            print("Internal server error. Please wait...")
+            time.sleep(10)
         else:
-            formatted_status = "Unknown"
-        current_datetime = datetime.now()
-        formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-        print("*---------------------------------")
-        print(f"{bold_start}{formatted_datetime}{bold_end}")
-        print("Server Status:", formatted_status)
-        print("Players Online:", players_online)
-        print("*---------------------------------")
-        with open("log.txt", 'a') as file:
-            file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + " players\n")
-        if players_online >= targetamt:
-            ctypes.windll.user32.MessageBoxW(0, f"Your specified player amount ({targetamt}) has been reached.", "!! TARGET AMOUNT REACHED !!", 0)
-            break
-        time.sleep(3)
-    else:
-        print("Error:", response.status_code)
-        time.sleep(5)
+            print("Error:", response.status_code)
+            time.sleep(5)
+    except Exception as e:
+        print("Sorry, an unkown error occured. Retrying...")
+        time.sleep(2)
