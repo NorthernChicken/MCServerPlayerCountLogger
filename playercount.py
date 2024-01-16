@@ -62,6 +62,11 @@ while True:
             with open("log.txt", 'a') as file:
                 file.write(formatted_datetime + " Internal server error.")
             time.sleep(10)
+        elif response.status_code == 400:
+            print("Invalid server IP. Check spelling and try again.")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Invalid server IP.")
+            break
         else:
             print("Error:", response.status_code)
             with open("log.txt", 'a') as file:
