@@ -44,16 +44,26 @@ while True:
             time.sleep(3)
         elif response.status_code == 404:
             print("Minecraft server not found or MCStatus API is down. Check server address and try again.")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Minecraft server not found or MCStatus API is down.")
             time.sleep(5)
         elif response.status_code == 429:
             print("Too many requests. Please wait...")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Sent too many requests.")
             time.sleep(10)
         elif response.status_code == 500:
             print("Internal server error. Please wait...")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Internal server error.")
             time.sleep(10)
         else:
             print("Error:", response.status_code)
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " An error occured. Error code: " + response.status_code)
             time.sleep(5)
     except Exception as e:
         print("Sorry, an unkown error occured. Retrying...")
+        with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " An unknown error occured.")
         time.sleep(2)
