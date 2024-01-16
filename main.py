@@ -70,5 +70,5 @@ while True:
     except Exception as e:
         print("Sorry, an unkown error occured. Retrying...")
         with open("log.txt", 'a') as file:
-                file.write(formatted_datetime + " An unknown error occured.")
+                file.write("An unknown error occured.")
         time.sleep(2)
