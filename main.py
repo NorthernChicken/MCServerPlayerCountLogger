@@ -21,7 +21,7 @@ api_link = api_base + ip
 while True:
     try:
         response = requests.get(api_link)
-        
+
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
         if response.status_code == 200:
@@ -57,6 +57,11 @@ while True:
             with open("log.txt", 'a') as file:
                 file.write(formatted_datetime + " Internal server error.")
             time.sleep(10)
+        elif response.status_code == 400:
+            print("Invalid server IP. Check spelling and try again.")
+            with open("log.txt", 'a') as file:
+                file.write(formatted_datetime + " Invalid server IP.")
+            break
         else:
             print("Error:", response.status_code)
             with open("log.txt", 'a') as file:
