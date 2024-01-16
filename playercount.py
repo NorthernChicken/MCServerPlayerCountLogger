@@ -24,6 +24,8 @@ while True:
     try:
         response = requests.get(api_link)
 
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
         if response.status_code == 200:
             json_data = response.json()
             players_online = json_data.get("players", {}).get("online", 0)
@@ -34,8 +36,6 @@ while True:
                 formatted_status = "Offline"
             else:
                 formatted_status = "Unknown"
-            current_datetime = datetime.now()
-            formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
             print("*---------------------------------")
             print(f"{bold_start}{formatted_datetime}{bold_end}")
             print("Server Status:", formatted_status)
