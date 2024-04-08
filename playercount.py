@@ -4,7 +4,7 @@ import time
 import ctypes
 
 '''
-* Variation of NorthernChicken's player count logger by skokcoder
+* Fork of NorthernChicken's player count logger by skokcoder
 * Desc: Continutally checks the amount of players on a Minecraft server using mcstatus.io's API, displays a message when a specified amount of people are online, then stops
 '''
   
@@ -15,7 +15,7 @@ bold_end = "\033[0m"
 
 api_base = "https://api.mcstatus.io/v2/status/java/"
 
-api_link = api_base + "4.tcp.us-cal-1.ngrok.io:19032"
+api_link = api_base + "mc.hypixel.net"
 
 while True:
     response = requests.get(api_link)
