@@ -1,13 +1,16 @@
-import requests
-from datetime import datetime
-import time
-import ctypes
-import os
 
 '''
 * Fork of NorthernChicken's player count logger by skokcoder
 * Desc: Continutally checks the amount of players on a Minecraft server using mcstatus.io's API, displays a message when a specified amount of people are online, then stops
 '''
+
+import requests
+from datetime import datetime
+import time
+import os
+from win10toast import ToastNotifier
+
+toast = ToastNotifier()
 
 countdown = 0
 
@@ -54,7 +57,13 @@ while True:
         with open("log.txt", 'a') as file:
             file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + f" players, player list: {player_list}\n")
         if players_online >= targetamt:
-            ctypes.windll.user32.MessageBoxW(0, f"Your specified player amount ({targetamt}) has been reached.", "!! TARGET AMOUNT REACHED !!", 0)
+            os.system("cls")
+            print("Check Notifications!")
+            toast.show_toast(
+                "!! TARGET AMOUNT REACHED !!",
+                f"The specified amount of players ({targetamt}) has been reached.",
+                duration = 99999,
+                threaded = True)
             break
         time.sleep(1)
         countdown -= 1
