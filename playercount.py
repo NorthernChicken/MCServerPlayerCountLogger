@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 import time
 import ctypes
+
 '''
 * Fork of NorthernChicken's player count logger by skokcoder
 * Desc: Continutally checks the amount of players on a Minecraft server using mcstatus.io's API, displays a message when a specified amount of people are online, then stops
