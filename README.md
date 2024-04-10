@@ -1,17 +1,9 @@
 # MCServerPlayerCountLogger
-This script will get the number of players on a Minecraft server and log it in the console and a text file. Uses Mcstatus.io's API.
+This is a modified version of NorthChicken's player logger. Changes include a player list/server recon detector, countdown timer until refresh, clearing the console to show a singular message, and desktop notifications. This program was specifically written to notify the user when a certain player amount has been reached on the specified server, and will stop once that number is reached. You can change the player count to a large number if you want to keep the program running. If you would like to see the time/date the player count changed, or would like to see the player list at a certain time, check log.txt. The server IP you are listening for is in the ip.txt file. Change it to whatever server IP you would like.
 
 *Note* Times might be inaccurate up to 30 seconds because Mcstatus's API can take time to update.
+*Another note* Servers must have server recon enabled in the config for the player list to work. Large servers usually have this turned off.
 
 # Install
-* Requires git and python
-* Download repo: ```git clone github.com/NorthernChicken/MCServerPlayerCountLogger```
-* Change to the directory ```cd MCServerPlayerCountLogger``` from wherever it was downloaded to
-* run ```python main.py```
-* the log is stored in ```log.txt```
-
-# Example output
-![Screenshot 2024-01-12 121501](https://github.com/NorthernChicken/MCServerPlayerCountLogger/assets/144752748/17134a2e-422a-4175-8b00-671f6e421e27)
-
-# Example log
-![Screenshot 2024-01-12 123143](https://github.com/NorthernChicken/MCServerPlayerCountLogger/assets/144752748/7f2a9c28-e4ce-47fb-a952-03e2bd67db4d)
+* Requires Python to run
+* import the package win10toast for program functionality.
