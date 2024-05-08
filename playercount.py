@@ -12,7 +12,7 @@ from win10toast import ToastNotifier
 
 toast = ToastNotifier()
 
-countdown = 0
+countdown = 0 # refresh countdown
 
 with open('ip.txt', 'r') as file:
     ip = file.read()
