@@ -31,9 +31,12 @@ while True:
     os.system("cls")
     if response.status_code == 200:
         if countdown == 0:
+            formatted_player_list = []
             json_data = response.json()
             players_online = json_data.get("players", {}).get("online", 0)
             player_list = json_data.get("players", {}).get("list", 0)
+            for player in player_list:
+                formatted_player_list.append(player["name_raw"])
             online_status = json_data['online']
             if online_status:
                 formatted_status = "Online"
@@ -51,7 +54,7 @@ while True:
         if len(player_list) == 0 and players_online > 0:
             print(f"Server Recon is not turned on.")
         else:
-            print(f"Player List: {player_list}")
+            print(f"Player List: {formatted_player_list}")
         print(f"Updating in {countdown} seconds.")
         print("*---------------------------------")
         with open("log.txt", 'a') as file:
