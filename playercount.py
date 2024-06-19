@@ -58,7 +58,7 @@ while True:
         print(f"Updating in {countdown} seconds.")
         print("*---------------------------------")
         with open("log.txt", 'a') as file:
-            file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + f" players, player list: {player_list}\n")
+            file.write(formatted_datetime + " Server is " + formatted_status + ". " + str(players_online) + f" players, player list: {formatted_player_list}\n")
         if players_online >= targetamt:
             os.system("cls")
             print("Check Notifications!")
