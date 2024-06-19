@@ -35,8 +35,9 @@ while True:
             json_data = response.json()
             players_online = json_data.get("players", {}).get("online", 0)
             player_list = json_data.get("players", {}).get("list", 0)
-            for player in player_list:
-                formatted_player_list.append(player["name_raw"])
+            if len(player_list) > 0:
+                for player in player_list:
+                    formatted_player_list.append(player["name_raw"])
             online_status = json_data['online']
             if online_status:
                 formatted_status = "Online"
@@ -44,10 +45,10 @@ while True:
                 formatted_status = "Offline"
             else:
                 formatted_status = "Unknown"
-            current_datetime = datetime.now()
-            formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
             countdown = 5
         print("*---------------------------------")
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
         print(f"{bold_start}{formatted_datetime}{bold_end}")
         print("Server Status:", formatted_status)
         print("Players Online:", players_online)
