@@ -1,6 +1,7 @@
 # MCServerPlayerCountLogger
 The first script will get the number of players on a Minecraft server and log it in the console and a text file. Uses Mcstatus.io's API.
 The second will notify you in the terminal if the player count reaches a certain amount.
+directping.py will do the same as main.py except using direct pings instead of an API. Usually this results in faster updates.
 
 *Note* Times might be inaccurate up to 30 seconds because Mcstatus's API can take time to update.
 
