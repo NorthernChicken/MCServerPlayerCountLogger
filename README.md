@@ -3,6 +3,8 @@ The first script will get the number of players on a Minecraft server and log it
 The second will notify you in the terminal if the player count reaches a certain amount.
 directping.py will do the same as main.py except using direct pings instead of an API. Usually this results in faster updates.
 
+```pll.py``` and ```pll.sh``` are shortcut scripts for ```playerlist_logger.py```, working universally and only on Linux, respectively. ```pll.sh``` sets ```pll``` as an alias for the script.
+
 *Note* Times might be inaccurate up to 30 seconds because Mcstatus's API can take time to update.
 
 # Install
